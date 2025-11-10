@@ -49,7 +49,7 @@ if st.button("Compute"):
     st.write("Category:", category(val))
 
     # number line plot
-import matplotlib.pyplot as plt
+
 
 fig, ax = plt.subplots(figsize=(7, 1.2))
 ax.set_xlim(10, 40)
