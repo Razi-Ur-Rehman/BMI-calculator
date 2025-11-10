@@ -38,7 +38,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.title("BMI Calculator — Streamlit Edition (Navy UI)")("BMI Calculator — Streamlit Edition (Navy UI)")
+st.title("BMI Calculator")
 
 w = st.number_input("Weight (kg)", min_value=0.1, format="%.2f")
 h = st.number_input("Height (meters)", min_value=0.1, format="%.2f")
