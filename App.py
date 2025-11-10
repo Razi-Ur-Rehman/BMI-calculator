@@ -19,15 +19,26 @@ def category(bmi_value: float) -> str:
 st.markdown(
     """
     <style>
-    body {background-color:#001f3f;}
-    .stApp {background-color:#001f3f;}
-    .stTextInput>div>div>input {background-color:#0b2d52;color:white;}
+    .stApp {background-color:#001a33;}
+    div[data-testid="stNumberInput"] input {
+        background-color:#0b2d52;
+        color:#e6e6e6;
+        border:1px solid #3a516e;
+    }
+    .stButton>button{
+        background-color:#133c66;
+        color:#e6e6e6;
+        border:1px solid #3a516e;
+    }
+    .stMarkdown {
+        color:#e9e9e9;
+    }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-st.title("BMI Calculator — Streamlit Edition (Navy UI)")
+st.title("BMI Calculator — Streamlit Edition (Navy UI)")("BMI Calculator — Streamlit Edition (Navy UI)")
 
 w = st.number_input("Weight (kg)", min_value=0.1, format="%.2f")
 h = st.number_input("Height (meters)", min_value=0.1, format="%.2f")
