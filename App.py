@@ -1,3 +1,6 @@
+import streamlit as st
+
+
 def bmi(weight_kg: float, height_m: float) -> float:
     return weight_kg / (height_m ** 2)
 
@@ -12,18 +15,24 @@ def category(bmi_value: float) -> str:
     else:
         return "Obese"
 
+# --- CSS ---
+st.markdown(
+    """
+    <style>
+    body {background-color:#001f3f;}
+    .stApp {background-color:#001f3f;}
+    .stTextInput>div>div>input {background-color:#0b2d52;color:white;}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
-if __name__ == "__main__":
-    try:
-        w = float(input("Weight in kg: "))
-        h = float(input("Height in meters: "))
+st.title("BMI Calculator")
 
-        if w <= 0 or h <= 0:
-            raise ValueError("height/weight must be positive >0")
+w = st.number_input("Weight (kg)", min_value=0.1, format="%.2f")
+h = st.number_input("Height (meters)", min_value=0.1, format="%.2f")
 
-        val = bmi(w, h)
-        print(f"BMI = {val:.2f}")
-        print("Category:", category(val))
-
-    except Exception as e:
-        print("Error:", e)
+if st.button("Compute"):
+    val = bmi(w, h)
+    st.write(f"BMI = {val:.2f}")
+    st.write("Category:", category(val))
