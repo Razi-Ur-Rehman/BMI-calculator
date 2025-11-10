@@ -38,7 +38,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.title("BMI Calculator")
+st.title("BMI Calculator — Streamlit Edition (Navy UI)")("BMI Calculator — Streamlit Edition (Navy UI)")
 
 w = st.number_input("Weight (kg)", min_value=0.1, format="%.2f")
 h = st.number_input("Height (meters)", min_value=0.1, format="%.2f")
@@ -49,13 +49,22 @@ if st.button("Compute"):
     st.write("Category:", category(val))
 
     # number line plot
-    import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
-    fig, ax = plt.subplots(figsize=(7, 1.2))
-    ax.set_xlim(10, 40)
-    ax.set_ylim(0, 1)
-    ax.axvline(val, linewidth=6)
-    ax.set_yticks([])
-    ax.set_xlabel("BMI scale 10 → 40")
+fig, ax = plt.subplots(figsize=(7, 1.2))
+ax.set_xlim(10, 40)
+ax.set_ylim(0, 1)
 
-    st.pyplot(fig)
+# shade zones (neutral tones — no bright saturation)
+ax.axvspan(10, 18.5, alpha=0.25)
+ax.axvspan(18.5, 25, alpha=0.15)
+ax.axvspan(25, 30, alpha=0.25)
+ax.axvspan(30, 40, alpha=0.35)
+
+# marker for actual BMI
+ax.axvline(val, linewidth=6)
+
+ax.set_yticks([])
+ax.set_xlabel("BMI scale — 10 → 40")
+
+st.pyplot(fig)(fig)
